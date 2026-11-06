@@ -89,7 +89,7 @@ export function Labs({ locale, tone = "light" }: { locale: Locale; tone?: "light
       {LABS.map((l, i) => (
         <li key={l.href} className={`border-b ${dark ? "border-white/15" : "border-line"}`}>
           <a {...linkProps(l.href, locale)} className={`group flex h-full items-start gap-4 py-6 pr-6 transition-colors ${dark ? "hover:text-gold" : "hover:text-brand"}`}>
-            <span className={`eyebrow pt-1 ${dark ? "text-white/40" : "text-ink-soft/60"}`}>{String(i + 1).padStart(2, "0")}</span>
+            <span className={`eyebrow pt-1 ${dark ? "text-white/40" : "text-ink-soft"}`}>{String(i + 1).padStart(2, "0")}</span>
             <span className={`font-[family-name:var(--font-fraunces)] text-[1.3rem] font-semibold leading-snug ${dark ? "text-white" : ""}`}>{l[locale]}</span>
           </a>
         </li>

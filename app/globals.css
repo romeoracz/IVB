@@ -20,7 +20,7 @@
   --color-line: #d9d0c4;
 
   /* Pathology stain accents (H&E). */
-  --color-eosin: #c9668f;
+  --color-eosin: #a8466f; /* darkened from #c9668f for WCAG AA text contrast */
   --color-haem: #4e3480;
 }
 

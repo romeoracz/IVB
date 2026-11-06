@@ -15,7 +15,7 @@ export function LangSwitch({ locale, className = "" }: { locale: Locale; classNa
           {l === locale ? (
             <span aria-current="true" className="font-semibold">{l.toUpperCase()}</span>
           ) : (
-            <Link href={swap(l)} hrefLang={l} className="opacity-60 hover:opacity-100">
+            <Link href={swap(l)} hrefLang={l} className="opacity-80 hover:opacity-100">
               {l.toUpperCase()}
             </Link>
           )}

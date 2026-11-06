@@ -121,6 +121,10 @@ def clean(content: str) -> tuple[str, list[dict]]:
             p = soup.new_tag("p")
             p.append(a)
             f.replace_with(p)
+    for f in soup.find_all("iframe"):
+        if not f.get("title"):
+            src = f.get("src", "")
+            f["title"] = "Google Maps" if "google.com/maps" in src else ("YouTube" if "youtube" in src else "Embedded content")
     for t in soup.find_all(string=re.compile(r"Powered By EmbedPress", re.I)):
         t.extract()
     docs: list[dict] = []
