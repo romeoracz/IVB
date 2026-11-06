@@ -577,4 +577,79 @@ export const CURATED: Record<string, Curated> = {
       },
     ],
   },
+
+  "proiecte-ivb": {
+    kicker: r("Cercetare", "Research"),
+    title: r("Proiecte", "Projects"),
+    lead: r("Proiecte naționale și internaționale la care participă institutul.", "National and international projects the institute takes part in."),
+    blocks: [
+      {
+        kind: "cards",
+        title: r("Programe și proiecte", "Programmes and projects"),
+        cols: 2,
+        items: [
+          { meta: "2026–2030", title: r("Centrul de excelență în cercetare avansată translațională în boli cardiovasculare și neurovasculare", "Centre of excellence in advanced translational research in cardiovascular and neurovascular disease"), href: "https://search-vasc.umfcd.ro/ro/" },
+          { meta: "2024–2029", title: r("Dezvoltarea cercetării genomice în România", "Developing genomic research in Romania"), href: "https://rogen.umfcd.ro/proiectul-rogen/" },
+          { meta: "2024–2029", title: r("Dezvoltarea cercetării translaționale pentru vaccinuri, seruri și alte medicamente biologice", "Developing translational research for vaccines, sera and other biological medicines"), href: "https://cantacuzino.mapn.ro/pages/cantavac-2-0" },
+          { meta: "2023–2026", title: r("Programul Nucleu", "Core Programme (Nucleu)"), href: "/{locale}/program-nucleu-2023-2026" },
+          { meta: "PNRR-III-C9-2022 – I5", title: r("Centrul Național de Competență în Domeniul Cancerului (CNCC)", "National Competence Centre for Cancer (CNCC)"), text: r("Crearea, operaționalizarea și dezvoltarea centrului", "Creating, operating and developing the centre"), href: "/{locale}/pnrr-iii-c9-2022-i5" },
+          { title: r("Heter-Omics 2", "Heter-Omics 2"), text: r("Proiect COFUND-ERANETE-RARE 3-HETER-OMICS-2, contract 88/2019", "Project COFUND-ERANETE-RARE 3-HETER-OMICS-2, contract 88/2019"), href: "/{locale}/proiecte-in-derulare-genetica" },
+        ],
+      },
+      {
+        kind: "rows",
+        kicker: r("Radiobiologie și ELI-NP", "Radiobiology and ELI-NP"),
+        title: r("Proiecte de radiobiologie", "Radiobiology projects"),
+        items: [
+          { meta: "Project 09 ELI", title: r("Advanced biological methods for investigating stress responses of normal and pre-leukemic cells under irradiation at ELI-NP – applications for astrobiology and FLASH radiotherapy / CELLI", "Advanced biological methods for investigating stress responses of normal and pre-leukemic cells under irradiation at ELI-NP – applications for astrobiology and FLASH radiotherapy / CELLI"), href: "/{locale}/radiobiologie-project-eli-09" },
+          { meta: "Project 13 ELI", title: r("Development of the national technological platform for investigating the interaction of complex biological systems with space radiations in the context of ELI-NP", "Development of the national technological platform for investigating the interaction of complex biological systems with space radiations in the context of ELI-NP"), href: "/{locale}/radiobiology-project-13-eli" },
+          { meta: "Nanother", title: r("Strategie teranostică avansată în cancer care combină terapia fotodinamică și nanosistemele", "Advanced theranostic strategy in cancer combining photodynamic therapy and nanosystems"), href: "/{locale}/radiobiology-nanother" },
+        ],
+      },
+      {
+        kind: "rows",
+        kicker: r("Programe instituționale", "Institutional programmes"),
+        title: r("Alte proiecte", "Other projects"),
+        items: [
+          { meta: "2019–2022", title: r("Programul Nucleu", "Core Programme (Nucleu)"), href: "/{locale}/program-nucleu-2019-2022" },
+          { meta: "Excelsan", title: r("Dezvoltarea excelenței INCD „Victor Babeș” în cercetarea pentru sănătate", "Developing the excellence of INCD “Victor Babeș” in health research"), href: "/{locale}/excelsan" },
+        ],
+      },
+      {
+        kind: "rows",
+        kicker: r("Fondul Social European · POC", "European Social Fund · POC"),
+        title: r("Proiecte cofinanțate prin Programul Operațional Competitivitate", "Projects co-financed through the Competitiveness Operational Programme"),
+        items: [
+          { meta: "P_40_197", title: r("INTELBIOMED", "INTELBIOMED"), text: r("Implementarea expertizei de cercetare biomedicală prin transfer de cunoștințe către mediul privat, pentru validarea de produse și servicii în domeniile biotehnologiilor medicale și sănătății", "Applying biomedical research expertise through knowledge transfer to the private sector, to validate products and services in medical biotechnology and health"), href: "http://www.intelbiomed.ro/" },
+          { meta: "P_37_732", title: r("REDBRAIN", "REDBRAIN"), text: r("Transfer de cunoștințe în domeniul biologiei redox pentru dezvoltarea de instrumente moleculare avansate în boli neurodegenerative – semnătura factorului de transcripție Nrf2 pentru diagnostic și terapie", "Knowledge transfer in redox biology to develop advanced molecular tools for neurodegenerative disease – the Nrf2 transcription factor signature for diagnosis and therapy"), href: "https://www.redbrain.ro/" },
+        ],
+      },
+    ],
+  },
+
+  "declaratii-ani": {
+    kicker: r("Transparență", "Transparency"),
+    title: r("Declarații ANI", "ANI declarations"),
+    lead: r("Declarațiile de avere și de interese (Agenția Națională de Integritate).", "Declarations of assets and interests (National Integrity Agency, ANI)."),
+    blocks: [
+      {
+        kind: "cards",
+        cols: 2,
+        items: [
+          { meta: "01", title: r("Directori", "Directors"), href: "/{locale}/declaratie-ani-directori" },
+          { meta: "02", title: r("Consiliul de administrație", "Board of directors"), href: "/{locale}/declaratii-consiliul-administratie" },
+          { meta: "03", title: r("Șefi de laboratoare / compartimente", "Heads of laboratories and departments"), href: "/{locale}/declaratii-ani-sefi-de-laboratoare-compartimente" },
+          { meta: "04", title: r("Alte poziții relevante", "Other relevant positions"), href: "/{locale}/declaratii-ani-alte-pozitii-relevante" },
+        ],
+      },
+    ],
+  },
+
+  "control-intern-managerial": {
+    kicker: r("Transparență", "Transparency"),
+    title: r("Control intern managerial", "Internal managerial control"),
+    blocks: [
+      { kind: "docs", items: [{ label: r("Sistemul de control intern managerial (SCIM)", "Internal managerial control system (SCIM)"), meta: "23.09.2024", href: `${UP}/2024/09/SCIM-23.09.2024.pdf` }] },
+    ],
+  },
 };
