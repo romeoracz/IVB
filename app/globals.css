@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-plex);
+  --font-mono: var(--font-plex-mono);
+
+  /* Brand blue sampled from the IVB logo lettering (#2D5688). */
+  --color-brand: #2d5688;
+  --color-brand-deep: #1b3866;
+  --color-navy: #0a1730;
+  --color-navy-2: #12264a;
+  --color-gold: #c9a96e;
+  --color-gold-soft: #e6d3a8;
+
+  --color-paper: #f7f3ee;
+  --color-paper-2: #efe8df;
+  --color-ink: #0f1a2c;
+  --color-ink-soft: #3b4658;
+  --color-line: #d9d0c4;
+
+  /* Pathology stain accents (H&E). */
+  --color-eosin: #c9668f;
+  --color-haem: #4e3480;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgb(201 169 110 / 0.35);
+}
+
+.eyebrow {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.35s ease;
+}
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .rise-2 {
+    animation-delay: 0.12s;
+  }
+  .rise-3 {
+    animation-delay: 0.24s;
+  }
+  .slow-pan {
+    animation: pan 40s ease-in-out infinite alternate;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pan {
+  from {
+    transform: scale(1.06) translateX(0);
+  }
+  to {
+    transform: scale(1.06) translateX(-2.5%);
+  }
+}
