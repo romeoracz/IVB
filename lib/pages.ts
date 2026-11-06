@@ -49,6 +49,7 @@ for (const item of NAV) {
 const EXTRA_TITLES: Record<string, Record<Locale, string>> = {
   laboratoare: { ro: "Laboratoare", en: "Laboratories" },
   "proiecte-ivb": { ro: "Proiecte", en: "Projects" },
+  "elementor-728": { ro: "Proiecte", en: "Projects" },
   "concurs-director-general": { ro: "Concurs pentru funcția de Director General", en: "Competition for the post of Director General" },
   "analize-anatomie-patologica": { ro: "Lista de prețuri", en: "Price list" },
   "legea-544": { ro: "Legea 544", en: "Law 544 (access to public information)" },

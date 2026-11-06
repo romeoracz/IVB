@@ -84,6 +84,9 @@ def map_href(href: str) -> str:
                     return "/{locale}/" + s if s != HOME_SLUG else "/{locale}"
             except ValueError:
                 pass
+        m = re.fullmatch(r"/archives/(\d+)/?", u.path)
+        if m and by_id.get(int(m.group(1))):
+            return "/{locale}/" + by_id[int(m.group(1))]
         path = unquote(u.path).strip("/ ").split("/")[-1] if u.path.strip("/ ") else ""
         if path == "" :
             return "/{locale}"

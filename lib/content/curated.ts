@@ -456,7 +456,7 @@ export const CURATED: Record<string, Curated> = {
           { img: "/media/wp/2023/08/2023_conf-768x427.png", title: r("Simpozioane", "Symposia"), text: r("Simpozioanele Victor Babeș", "The Victor Babeș Symposia"), href: "/{locale}/symposium" },
           { img: "/media/wp/2022/04/banner_simplu.jpg", title: r("135 de ani de activitate", "135 years of activity"), text: r("Aniversarea din 2022", "The 2022 anniversary"), href: "/{locale}/aniversar-2022" },
           { img: "/media/wp/2020/10/6-1024x683.jpg", title: r("Teaching & Training", "Teaching & Training"), text: r("Workshopuri și prezentări", "Workshops and presentations"), href: "/{locale}/workshopuri-si-prezentari" },
-          { img: "/media/wp/2020/10/4-1024x681.jpg", title: r("Proiecte", "Projects"), href: "https://www.ivb.ro/archives/728" },
+          { img: "/media/wp/2020/10/4-1024x681.jpg", title: r("Proiecte", "Projects"), href: "/{locale}/elementor-728" },
         ],
       },
       {

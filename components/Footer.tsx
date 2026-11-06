@@ -71,8 +71,10 @@ export function Footer({ locale }: { locale: Locale }) {
 
         <div className="flex flex-col justify-between gap-2 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row">
           <p>© 2026 {NAME[locale]}</p>
-          <p>
-            <a href="mailto:responsabilgdpr@ivb.ro" className="link-underline">{ro ? "Protecția datelor (GDPR)" : "Data protection (GDPR)"}</a>
+          <p className="flex flex-wrap gap-x-5 gap-y-1">
+            <a href={`/${locale}/contact`} className="link-underline">{ro ? "Contact" : "Contact"}</a>
+            <a href={`/${locale}/protectia-datelor-personale`} className="link-underline">{ro ? "Protecția datelor (GDPR)" : "Data protection (GDPR)"}</a>
+            <a href={`/${locale}/pagini`} className="link-underline">{ro ? "Toate paginile" : "All pages"}</a>
           </p>
         </div>
       </div>
