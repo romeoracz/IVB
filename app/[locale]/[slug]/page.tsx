@@ -99,12 +99,12 @@ export default async function ContentPage({ params }: Props) {
           ))}
         </nav>
       )}
-      {!ro && (
+      {p.lang !== "mixed" && p.lang !== locale && (
         <p className="mb-8 rounded-2xl border border-gold bg-gold-soft/50 px-5 py-4 text-sm text-ink">
-          This page is currently available in Romanian only. An English version is being prepared.
+          {ro ? "Această pagină este disponibilă doar în limba engleză." : "This page is currently available in Romanian only. An English version is being prepared."}
         </p>
       )}
-      <article lang="ro" className="prose-ivb" dangerouslySetInnerHTML={{ __html: html }} />
+      <article lang={p.lang === "mixed" ? undefined : p.lang} className="prose-ivb" dangerouslySetInnerHTML={{ __html: html }} />
     </PageShell>
   );
 }

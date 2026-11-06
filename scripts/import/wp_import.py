@@ -169,6 +169,21 @@ def clean(content: str) -> tuple[str, list[dict]]:
     return out.strip(), docs
 
 
+RO_W = set("și şi în pentru este sunt care din cu al ale la de privind concurs anunț anunt proiect cercetare institutului rezultate".split())
+EN_W = set("the and of in for with is are to by from on research project results".split())
+
+
+def language(body: str) -> str:
+    """Language of the page text: 'ro', 'en', or 'mixed' (both languages, or too little text to tell)."""
+    words = re.findall(r"[a-zA-ZăâîșşțţĂÂÎȘŞȚŢ]+", re.sub(r"<[^>]+>", " ", body).lower())
+    r = sum(w in RO_W for w in words)
+    e = sum(w in EN_W for w in words)
+    if r + e < 6:  # too little text to tell: show no language notice
+        return "mixed"
+    share = e / (r + e)
+    return "en" if share > 0.6 else "ro" if share < 0.4 else "mixed"
+
+
 os.makedirs(os.path.join(OUT, "pages"), exist_ok=True)
 index = []
 for p in pages:
@@ -181,6 +196,7 @@ for p in pages:
         "title": title,
         "modified": p["modified"],
         "source": p["link"],
+        "lang": language(body),
         "html": body,
         "docs": docs,
     }

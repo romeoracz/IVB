@@ -5,6 +5,7 @@
 "title": "Education",
 "modified": "2024-10-07T10:04:44",
 "source": "https://www.ivb.ro/education",
+"lang": "mixed",
 "html": "<figure>\n<a href=\"/{locale}/symposium\">\n<img alt=\"\" height=\"427\" src=\"/wp-content/uploads/2023/08/2023_conf-768x427.png\" width=\"768\"/> </a>\n<figcaption><h1>Simpozioane incheiate</h1></figcaption>\n</figure>\n<figure>\n<a href=\"/{locale}/aniversar-2022\">\n<img alt=\"\" height=\"624\" src=\"/wp-content/uploads/2022/04/banner_simplu.jpg\" width=\"1640\"/> </a>\n<figcaption><h1>135 ani de activitate</h1></figcaption>\n</figure>\n<figure>\n<a href=\"/{locale}/elementor-728\">\n<img alt=\"\" height=\"525\" src=\"/wp-content/uploads/2020/10/4-1024x681.jpg\" width=\"790\"/> </a>\n<figcaption><h1>Projects</h1></figcaption>\n</figure>\n<figure>\n<a href=\"/{locale}/workshopuri-si-prezentari\">\n<img alt=\"\" height=\"527\" src=\"/wp-content/uploads/2020/10/6-1024x683.jpg\" width=\"790\"/> </a>\n<figcaption><h1>Teaching &amp;Training</h1></figcaption>\n</figure>",
 "docs": []
 }

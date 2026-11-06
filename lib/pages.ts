@@ -10,6 +10,7 @@ export type PageRec = {
   title: string;
   modified: string;
   source: string;
+  lang: "ro" | "en" | "mixed";
   html: string;
   docs: { label: string; href: string }[];
 };

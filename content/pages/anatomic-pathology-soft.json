@@ -5,6 +5,7 @@
 "title": "anatomic-pathology-soft",
 "modified": "2024-10-07T10:47:39",
 "source": "https://www.ivb.ro/anatomic-pathology-soft",
+"lang": "en",
 "html": "<h4>Software development</h4>\n<p>Currently, there is a huge need of data digitalization, mostly in the research field. Complex data acquisition and significant development of experimental possibilities create challenging tasks for the scientific community. Within this project, we plan to perform 3D Reconstruction of different organs. Further, a machine learning-based image analysis program will investigate concomitantly the morphology, physiology, cellular and molecular features of pathological conditions, providing new insights in the mechanisms of diseases.</p>\n<p>For more details please visit our websites:</p><p><a href=\"https://www.nextgenpathology.eu/funding\">https://www.nextgenpathology.eu/funding</a></p><p><a href=\"https://www.cardioro.com/research/projects\">https://www.cardioro.com/research/projects</a></p>",
 "docs": []
 }
