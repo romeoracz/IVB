@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
-import { allPages, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
+import { allPages, english, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
 import { DocList, PageShell } from "@/components/PageShell";
 import { Blocks } from "@/components/Blocks";
 import { CURATED } from "@/lib/content/curated";
@@ -52,7 +52,9 @@ export default async function ContentPage({ params }: Props) {
       </PageShell>
     );
   }
-  const html = p.html.replaceAll("{locale}", locale);
+  const translated = !ro && p.lang === "ro" ? english(slug)?.html : undefined;
+  const html = (translated ?? p.html).replaceAll("{locale}", locale);
+  const lang = translated ? "en" : p.lang;
   const section = sectionOf(slug);
   const parent = p.parent ? getById(p.parent) : undefined;
   const labInfo = labOf(slug);
@@ -78,7 +80,7 @@ export default async function ContentPage({ params }: Props) {
       crumbs={crumbs}
       aside={
         <div className="space-y-6">
-          <DocList locale={locale} docs={p.docs} />
+          {!translated && <DocList locale={locale} docs={p.docs} />}
           <p className="px-2 text-xs text-ink-soft">
             {ro ? "Actualizat la " : "Updated "} {fmtDate(p.modified, locale)}
           </p>
@@ -99,12 +101,17 @@ export default async function ContentPage({ params }: Props) {
           ))}
         </nav>
       )}
-      {p.lang !== "mixed" && p.lang !== locale && (
+      {translated && (
+        <p className="mb-8 text-sm text-ink-soft">
+          English translation of the <Link href={`/ro/${slug}`} className="underline underline-offset-2 hover:text-eosin">Romanian page</Link>.
+        </p>
+      )}
+      {lang !== "mixed" && lang !== locale && (
         <p className="mb-8 rounded-2xl border border-gold bg-gold-soft/50 px-5 py-4 text-sm text-ink">
           {ro ? "Această pagină este disponibilă doar în limba engleză." : "This page is currently available in Romanian only. An English version is being prepared."}
         </p>
       )}
-      <article lang={p.lang === "mixed" ? undefined : p.lang} className="prose-ivb" dangerouslySetInnerHTML={{ __html: html }} />
+      <article lang={lang === "mixed" ? undefined : lang} className="prose-ivb" dangerouslySetInnerHTML={{ __html: html }} />
     </PageShell>
   );
 }

@@ -6,30 +6,30 @@
 "modified": "2022-03-07T10:56:22",
 "source": "https://www.ivb.ro/situatii-de-urgenta",
 "lang": "ro",
-"html": "<h2>Situatii de urgenta</h2>\n<figure>\n<figcaption>Decizie masuri stare de alerta 2</figcaption>\n</figure>\n<figure>\n<figcaption> Decizie 128P - completare masuri</figcaption>\n</figure>\n<figure>\n<figcaption>Decizia 127P</figcaption>\n</figure>\n<figure>\n<figcaption>Decizie 259P</figcaption>\n</figure>\n<figure>\n<figcaption>Ghid COVID-19-Pentru autoizolare la domiciliu</figcaption>\n</figure>\n<figure>\n<figcaption>Plan specific de continuitate aplicabil în INCD „Victor Babeș”</figcaption>\n</figure>",
+"html": "<h2>Situatii de urgenta</h2>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/2020.06.18%20-%20Decizie%20masuri%20stare%20de%20alerta_2.pdf\">Decizie masuri stare de alerta 2</a></figcaption>\n</figure>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/20202.05.20.%20Decizie%20128P%20-%20completare%20masuri.pdf\"> Decizie 128P - completare masuri</a></figcaption>\n</figure>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/Decizia%20127P_18.05.2020.pdf\">Decizia 127P</a></figcaption>\n</figure>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/Decizie%20259P_27.10.2020.pdf\">Decizie 259P</a></figcaption>\n</figure>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/Ghid%20COVID-19-Pentru%20autoizolare%20la%20domiciliu-.pdf\">Ghid COVID-19-Pentru autoizolare la domiciliu</a></figcaption>\n</figure>\n<figure>\n<figcaption><a href=\"https://www.ivb.ro/intranet/situatii_de_urgenta/Plan%20specific%20de%20continuitate%20aplicabil%20%20%20%een%20INCDVB.pdf\">Plan specific de continuitate aplicabil în INCD „Victor Babeș”</a></figcaption>\n</figure>",
 "docs": [
 {
-"label": "",
+"label": "Decizie masuri stare de alerta 2",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/2020.06.18%20-%20Decizie%20masuri%20stare%20de%20alerta_2.pdf"
 },
 {
-"label": "",
+"label": "Decizie 128P - completare masuri",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/20202.05.20.%20Decizie%20128P%20-%20completare%20masuri.pdf"
 },
 {
-"label": "",
+"label": "Decizia 127P",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/Decizia%20127P_18.05.2020.pdf"
 },
 {
-"label": "",
+"label": "Decizie 259P",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/Decizie%20259P_27.10.2020.pdf"
 },
 {
-"label": "",
+"label": "Ghid COVID-19-Pentru autoizolare la domiciliu",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/Ghid%20COVID-19-Pentru%20autoizolare%20la%20domiciliu-.pdf"
 },
 {
-"label": "",
+"label": "Plan specific de continuitate aplicabil în INCD „Victor Babeș”",
 "href": "https://www.ivb.ro/intranet/situatii_de_urgenta/Plan%20specific%20de%20continuitate%20aplicabil%20%20%20%een%20INCDVB.pdf"
 }
 ]

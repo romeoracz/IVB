@@ -21,6 +21,7 @@ export type Block =
   | { kind: "facts"; items: { k: string; v: L10n; href?: string }[] }
   | { kind: "callout"; title: L10n; body?: L10n; href?: string; cta?: L10n; tone?: "eosin" | "ink" | "gold" }
   | { kind: "contact"; title?: L10n; lines: { label: L10n; value: string; href?: string }[] }
+  | { kind: "map"; title: L10n; src: string }
   | { kind: "honorees"; items: { year: string; name: string; title: string; lines: { text: string; href?: string }[]; img: string; diploma: string }[] }
   | { kind: "media"; title?: L10n; items: { title: L10n; text?: L10n; href: string; type: "audio" | "video" | "link" }[] };
 
@@ -249,6 +250,17 @@ function BlockView({ b, l }: { b: Block; l: Locale }) {
             ))}
           </dl>
         </section>
+      );
+
+    case "map":
+      return (
+        <iframe
+          src={b.src}
+          title={b.title[l]}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="aspect-[16/9] w-full rounded-3xl border border-line"
+        />
       );
 
     case "honorees":

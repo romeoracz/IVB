@@ -35,6 +35,18 @@ export function getPage(slug: string): PageRec | undefined {
   return allPages().find((p) => p.slug === slug);
 }
 
+/**
+ * Hand-made English translation of an imported Romanian page (content/en/<slug>.html), if any.
+ * An optional first line `<!-- title: ... -->` gives the English page title.
+ */
+export function english(slug: string): { title?: string; html: string } | undefined {
+  const f = path.join(process.cwd(), "content", "en", `${slug}.html`);
+  if (!fs.existsSync(f)) return undefined;
+  const raw = fs.readFileSync(f, "utf8");
+  const m = raw.match(/^<!-- title: (.+?) -->\s*/);
+  return { title: m?.[1], html: m ? raw.slice(m[0].length) : raw };
+}
+
 export function getById(id: number): PageRec | undefined {
   return allPages().find((p) => p.id === id);
 }
@@ -62,6 +74,10 @@ const EXTRA_TITLES: Record<string, Record<Locale, string>> = {
 export function pageTitle(p: PageRec, locale: Locale): string {
   const t = MENU_TITLES[p.slug] ?? EXTRA_TITLES[p.slug];
   if (t) return t[locale];
+  if (locale === "en" && p.lang === "ro") {
+    const e = english(p.slug)?.title;
+    if (e) return e;
+  }
   return p.title.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
 }
 

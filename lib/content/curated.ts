@@ -652,4 +652,22 @@ export const CURATED: Record<string, Curated> = {
       { kind: "docs", items: [{ label: r("Sistemul de control intern managerial (SCIM)", "Internal managerial control system (SCIM)"), meta: "23.09.2024", href: `${UP}/2024/09/SCIM-23.09.2024.pdf` }] },
     ],
   },
+
+  contact: {
+    title: r("Contact", "Contact"),
+    blocks: [
+      {
+        kind: "contact",
+        lines: [
+          { label: r("Adresă", "Address"), value: "Splaiul Independenţei 99-101, Sector 5, Bucureşti" },
+          { label: r("Telefon", "Telephone"), value: "021 319 27 32", href: "tel:+40213192732" },
+          { label: r("Telefon", "Telephone"), value: "021 319 45 28", href: "tel:+40213194528" },
+          { label: r("E-mail", "E-mail"), value: "info@ivb.ro", href: "mailto:info@ivb.ro" },
+          { label: r("Protecția datelor (GDPR)", "Data protection (GDPR)"), value: "responsabilgdpr@ivb.ro", href: "mailto:responsabilgdpr@ivb.ro" },
+          { label: r("Program pacienți, luni – vineri", "Patient hours, Monday – Friday"), value: "09:00 – 16:00 · 021 319 27 34", href: "tel:+40213192734" },
+        ],
+      },
+      { kind: "map", title: r("Hartă: Institutul Național Victor Babeș", "Map: Victor Babeș National Institute"), src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.00372011848!2d26.080115115026853!3d44.43308590966866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff6797a5af0d%3A0x41823887b9fe740c!2sInstitutul%20Na%C8%9Bional%20Victor%20Babe%C8%99!5e0!3m2!1sen!2sro!4v1595257429475!5m2!1sen!2sro" },
+    ],
+  },
 };

@@ -12,6 +12,9 @@ Documents and images are served from the copy in public/wp-content/ (mirrored
 from ivb.ro on 2026-11-06). The few files the old server no longer serves keep
 their original ivb.ro address.
 
+Pages whose REST copy is cut at a <!--more--> break are read from the saved
+live page in <export_dir>/../live/<slug>.html instead.
+
 Run: python3 -I scripts/import/wp_import.py <export_dir>
 """
 from __future__ import annotations
@@ -38,7 +41,7 @@ DROP = {"script", "style", "svg", "noscript", "form", "input", "label", "button"
 ATTRS = {"a": {"href"}, "img": {"src", "alt", "width", "height"}, "iframe": {"src", "title"},
          "video": {"src", "controls", "poster"}, "source": {"src", "type"}, "td": {"colspan", "rowspan"}, "th": {"colspan", "rowspan"}}
 # Decorative images used as icons/placeholders on the old site.
-DECOR = re.compile(r"(female_place|placeholder\.png|male_place|pdf-file|domain-registration|startup\.png|certificate\.png|offer-|arrow|icon)", re.I)
+DECOR = re.compile(r"(/word(-\d+x\d+)?\.png|female_place|placeholder\.png|male_place|pdf-file|domain-registration|startup\.png|certificate\.png|offer-|arrow|icon)", re.I)
 GENERIC = {"detalii", "aici", "here", "ro", "en", "click", "citeste mai mult", "citește mai mult", "read more", "download", "descarca", "descarcă", "pdf", "link"}
 DOC_EXT = re.compile(r"\.(pdf|docx?|xlsx?|pptx?|zip|rar|mp3|mp4)(\?|#|$)", re.I)
 
@@ -128,6 +131,23 @@ def clean(content: str) -> tuple[str, list[dict]]:
     for t in soup.find_all(string=re.compile(r"Powered By EmbedPress", re.I)):
         t.extract()
     docs: list[dict] = []
+    # Icon + caption figures ("PDF icon" linking to a file, caption underneath):
+    # put the link on the caption so it survives when the icon is dropped.
+    for fig in soup.find_all("figure"):
+        a = fig.find("a", href=True)
+        cap = fig.find("figcaption")
+        if a and cap and not cap.find("a") and a.get_text(strip=True) == "":
+            link = soup.new_tag("a", href=a["href"])
+            for child in list(cap.contents):
+                link.append(child.extract())
+            cap.append(link)
+            a.decompose()
+    # Any other icon-only document link gets its file type as text (e.g. "PDF").
+    for a in soup.find_all("a", href=True):
+        m = DOC_EXT.search(a["href"])
+        if m and a.get_text(strip=True) == "" and a.find("img") and all(DECOR.search(i.get("src", "")) for i in a.find_all("img")):
+            a.clear()
+            a.string = m.group(1).upper()
     for img in soup.find_all("img"):
         src = img.get("src", "")
         if DECOR.search(src):
@@ -186,8 +206,22 @@ def language(body: str) -> str:
 
 os.makedirs(os.path.join(OUT, "pages"), exist_ok=True)
 index = []
+LIVE = os.path.join(SRC, "..", "live")
+
+
+def content_of(p: dict) -> str:
+    """REST content, or the live page body where the REST copy stops at a <!--more--> break."""
+    c = p["content"]["rendered"]
+    f = os.path.join(LIVE, p["slug"] + ".html")
+    if "more-link" in c and os.path.exists(f):
+        h = open(f, encoding="utf-8").read()
+        i = h.find(">", h.find('class="entry-content')) + 1
+        c = h[i:h.find("<!-- entry-content", i)]
+    return c
+
+
 for p in pages:
-    body, docs = clean(p["content"]["rendered"])
+    body, docs = clean(content_of(p))
     title = html.unescape(p["title"]["rendered"]).strip()
     rec = {
         "slug": p["slug"],
