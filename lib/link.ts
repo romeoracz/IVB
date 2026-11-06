@@ -12,5 +12,6 @@ export function isExternal(href: string): boolean {
 /** Props for an <a>: new tab only for links that leave the site. */
 export function linkProps(href: string, locale: Locale) {
   const h = loc(href, locale);
-  return isExternal(h) ? { href: h, target: "_blank", rel: "noopener" } : { href: h };
+  const doc = /\.(pdf|docx?|xlsx?|pptx?|zip|rar|mp3|mp4)(\?|#|$)/i.test(h);
+  return isExternal(h) || doc ? { href: h, target: "_blank", rel: "noopener" } : { href: h };
 }

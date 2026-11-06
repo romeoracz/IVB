@@ -8,7 +8,7 @@ import type { L10n } from "./nav";
  */
 export type Curated = { kicker?: L10n; title: L10n; lead?: L10n; blocks: Block[]; art?: string };
 
-const UP = "https://www.ivb.ro/wp-content/uploads";
+const UP = "/wp-content/uploads";
 const r = (ro: string, en: string): L10n => ({ ro, en });
 
 export const CURATED: Record<string, Curated> = {

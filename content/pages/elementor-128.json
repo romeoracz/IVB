@@ -5,6 +5,6 @@
 "title": "Elementor #128",
 "modified": "2020-07-24T06:40:38",
 "source": "https://www.ivb.ro/elementor-128",
-"html": "<figure>\n<img alt=\"\" src=\"https://www.ivb.ro/wp-content/plugins/elementor/assets/images/placeholder.png\"/> <figcaption>1</figcaption>\n</figure>\n<figure>\n<img alt=\"\" src=\"https://www.ivb.ro/wp-content/plugins/elementor/assets/images/placeholder.png\"/> <figcaption>2</figcaption>\n</figure>\n<figure>\n<img alt=\"\" src=\"https://www.ivb.ro/wp-content/plugins/elementor/assets/images/placeholder.png\"/> <figcaption>3</figcaption>\n</figure>\n<figure>\n<img alt=\"\" src=\"https://www.ivb.ro/wp-content/plugins/elementor/assets/images/placeholder.png\"/> <figcaption>4</figcaption>\n</figure>\n<img alt=\"\" height=\"590\" src=\"https://www.ivb.ro/wp-content/uploads/2020/07/DJI_0138-1024x787-1-768x590.png\" width=\"768\"/>",
+"html": "<figure>\n<figcaption>1</figcaption>\n</figure>\n<figure>\n<figcaption>2</figcaption>\n</figure>\n<figure>\n<figcaption>3</figcaption>\n</figure>\n<figure>\n<figcaption>4</figcaption>\n</figure>\n<img alt=\"\" height=\"590\" src=\"/wp-content/uploads/2020/07/DJI_0138-1024x787-1-768x590.png\" width=\"768\"/>",
 "docs": []
 }

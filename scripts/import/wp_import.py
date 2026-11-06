@@ -8,7 +8,9 @@ Output: content/pages/<slug>.json  {slug,id,title,modified,source,html,docs}
 The text is NOT changed here. The importer only strips page-builder markup
 (Elementor wrappers, inline styles, scripts, decorative icons) and rewrites
 links to pages of the old site so they point at the same page on the new site.
-Documents (PDF, DOCX, ...) keep their original ivb.ro address.
+Documents and images are served from the copy in public/wp-content/ (mirrored
+from ivb.ro on 2026-11-06). The few files the old server no longer serves keep
+their original ivb.ro address.
 
 Run: python3 -I scripts/import/wp_import.py <export_dir>
 """
@@ -36,7 +38,7 @@ DROP = {"script", "style", "svg", "noscript", "form", "input", "label", "button"
 ATTRS = {"a": {"href"}, "img": {"src", "alt", "width", "height"}, "iframe": {"src", "title"},
          "video": {"src", "controls", "poster"}, "source": {"src", "type"}, "td": {"colspan", "rowspan"}, "th": {"colspan", "rowspan"}}
 # Decorative images used as icons/placeholders on the old site.
-DECOR = re.compile(r"(female_place|male_place|pdf-file|domain-registration|startup\.png|certificate\.png|offer-|arrow|icon)", re.I)
+DECOR = re.compile(r"(female_place|placeholder\.png|male_place|pdf-file|domain-registration|startup\.png|certificate\.png|offer-|arrow|icon)", re.I)
 GENERIC = {"detalii", "aici", "here", "ro", "en", "click", "citeste mai mult", "citește mai mult", "read more", "download", "descarca", "descarcă", "pdf", "link"}
 DOC_EXT = re.compile(r"\.(pdf|docx?|xlsx?|pptx?|zip|rar|mp3|mp4)(\?|#|$)", re.I)
 
@@ -55,6 +57,14 @@ pages = _pages + [p for p in load("posts_*.json") if p["slug"] not in _page_slug
 by_id = {p["id"]: p["slug"] for p in pages}
 slugs = {p["slug"] for p in pages}
 HOME_SLUG = "elementor-123"
+PUBLIC = os.path.join(os.path.dirname(__file__), "..", "..", "public")
+
+
+def upload(path: str, query: str = "") -> str:
+    """Local copy of an old-site upload when we have it, else the ivb.ro address."""
+    if os.path.isfile(os.path.join(PUBLIC, unquote(path).lstrip("/"))):
+        return path
+    return "https://www.ivb.ro" + path + (("?" + query) if query else "")
 
 
 def map_href(href: str) -> str:
@@ -65,7 +75,7 @@ def map_href(href: str) -> str:
     host = (u.netloc or "").lower()
     if host in ("ivb.ro", "www.ivb.ro"):
         if "/wp-content/" in u.path or DOC_EXT.search(u.path):
-            return "https://www.ivb.ro" + u.path + (("?" + u.query) if u.query else "")
+            return upload(u.path, u.query)
         q = parse_qs(u.query)
         if "page_id" in q:
             try:
@@ -93,11 +103,33 @@ def clean(content: str) -> tuple[str, list[dict]]:
         c.extract()
     for t in soup.find_all(DROP):
         t.decompose()
+    # PDF viewer widgets and the password-protected intranet frame become plain links.
+    for f in soup.find_all("iframe"):
+        src = html.unescape(f.get("src", ""))
+        title = f.get("title", "").strip()
+        target = None
+        if "embedpress" in src and "file=" in src:
+            target = map_href(unquote(parse_qs(urlparse(src.split("#")[0]).query)["file"][0]))
+        elif "/wp-content/inet" in src:
+            target = src
+        if target:
+            a = soup.new_tag("a", href=target)
+            a.string = title or target.rsplit("/", 1)[-1]
+            p = soup.new_tag("p")
+            p.append(a)
+            f.replace_with(p)
+    for t in soup.find_all(string=re.compile(r"Powered By EmbedPress", re.I)):
+        t.extract()
     docs: list[dict] = []
     for img in soup.find_all("img"):
         src = img.get("src", "")
         if DECOR.search(src):
             img.decompose()
+    for t in soup.find_all(["img", "video", "source", "iframe"]):
+        if t.get("src"):
+            u = urlparse(t["src"])
+            if (u.netloc or "").lower() in ("ivb.ro", "www.ivb.ro") and "/wp-content/" in u.path:
+                t["src"] = upload(u.path)
     for t in list(soup.find_all(True)):
         if t.name not in KEEP:
             t.unwrap()

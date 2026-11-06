@@ -95,8 +95,8 @@ export const PAST_EVENTS = [
 
 // Proof points, each stated on ivb.ro.
 export const CREDENTIALS = [
-  { k: "ISO 9001", v: { ro: "Sistem de management certificat (CERTIND)", en: "Certified management system (CERTIND)" }, href: "https://www.ivb.ro/wp-content/uploads/2026/05/CERTIND_IVB_2026.jpg" },
-  { k: "ISO 15189", v: { ro: "Laborator de histopatologie acreditat RENAR", en: "RENAR-accredited histopathology laboratory" }, href: "https://www.ivb.ro/wp-content/uploads/2026/10/RENAR_IVB_2025.pdf" },
+  { k: "ISO 9001", v: { ro: "Sistem de management certificat (CERTIND)", en: "Certified management system (CERTIND)" }, href: "/wp-content/uploads/2026/05/CERTIND_IVB_2026.jpg" },
+  { k: "ISO 15189", v: { ro: "Laborator de histopatologie acreditat RENAR", en: "RENAR-accredited histopathology laboratory" }, href: "/wp-content/uploads/2026/10/RENAR_IVB_2025.pdf" },
   { k: "HR Excellence", v: { ro: "Distincția Comisiei Europene HR Excellence in Research", en: "European Commission HR Excellence in Research award" }, href: "/{locale}/hrs4r-strategia-de-resurse-umane" },
 ];
 
