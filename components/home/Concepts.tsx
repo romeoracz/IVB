@@ -87,7 +87,7 @@ export function ConceptB({ locale, base }: P) {
         <section className={`${wrap} pb-16 pt-10 sm:pt-16`}>
           <p className="eyebrow rise text-eosin">{ro ? "Institutul „Victor Babeș” · București" : "Victor Babeș Institute · Bucharest"}</p>
           <h1 className="display rise rise-2 mt-6 max-w-6xl text-[clamp(3rem,9vw,8.4rem)] text-ink">
-            {ro ? <>Vedem boala <span className="text-haem">la nivel de celulă</span></> : <>We see disease <span className="text-haem">at the level of the cell</span></>}
+            {ro ? <>De la moleculă <span className="text-haem">la pacient</span></> : <>From molecule <span className="text-haem">to patient</span></>}
           </h1>
           <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
             <p className="rise rise-3 max-w-2xl text-xl leading-relaxed text-ink-soft">{MISSION[locale]}</p>

@@ -149,3 +149,33 @@ body {
 .prose-ivb iframe, .prose-ivb video { width: 100%; aspect-ratio: 16 / 9; border-radius: 1rem; }
 .prose-ivb hr { border-color: var(--color-line); margin: 2rem 0; }
 .prose-ivb blockquote { border-left: 3px solid var(--color-eosin); padding-left: 1rem; color: var(--color-ink-soft); }
+
+/* Page-builder buttons from the old site (calls to action, "read more", downloads). */
+.prose-ivb .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.prose-ivb .btn::after { content: "→"; font-size: 0.95em; }
+.prose-ivb .btn:hover,
+.prose-ivb .btn:focus-visible { background: var(--color-eosin); color: #fff; transform: translateY(-1px); }
+.prose-ivb a.btn[href$=".pdf"]::after,
+.prose-ivb a.btn[href$=".docx"]::after,
+.prose-ivb a.btn[href$=".doc"]::after,
+.prose-ivb a.btn[href$=".pptx"]::after { content: "↓"; }
+.prose-ivb .btn-muted {
+  background: transparent;
+  color: var(--color-ink-soft);
+  border: 1px dashed var(--color-line);
+}
+.prose-ivb .btn-muted::after { content: none; }

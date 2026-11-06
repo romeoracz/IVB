@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
-import { allPages, english, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
+import { allPages, translation, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
 import { DocList, PageShell } from "@/components/PageShell";
 import { Blocks } from "@/components/Blocks";
 import { CURATED } from "@/lib/content/curated";
@@ -52,9 +52,9 @@ export default async function ContentPage({ params }: Props) {
       </PageShell>
     );
   }
-  const translated = !ro && p.lang === "ro" ? english(slug)?.html : undefined;
+  const translated = translation(slug, locale)?.html;
   const html = (translated ?? p.html).replaceAll("{locale}", locale);
-  const lang = translated ? "en" : p.lang;
+  const lang = translated ? locale : p.lang;
   const section = sectionOf(slug);
   const parent = p.parent ? getById(p.parent) : undefined;
   const labInfo = labOf(slug);
@@ -101,9 +101,13 @@ export default async function ContentPage({ params }: Props) {
           ))}
         </nav>
       )}
-      {translated && (
+      {translated && p.lang !== "mixed" && p.lang !== locale && (
         <p className="mb-8 text-sm text-ink-soft">
-          English translation of the <Link href={`/ro/${slug}`} className="underline underline-offset-2 hover:text-eosin">Romanian page</Link>.
+          {ro ? "Traducere în limba română a " : "English translation of the "}
+          <Link href={`/${p.lang}/${slug}`} className="underline underline-offset-2 hover:text-eosin">
+            {ro ? "paginii în limba engleză" : "Romanian page"}
+          </Link>
+          .
         </p>
       )}
       {lang !== "mixed" && lang !== locale && (

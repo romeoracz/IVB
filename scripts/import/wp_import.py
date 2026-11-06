@@ -38,7 +38,7 @@ KEEP = {
     "sup", "sub", "hr", "iframe", "video", "source",
 }
 DROP = {"script", "style", "svg", "noscript", "form", "input", "label", "button", "xml", "select", "textarea"}
-ATTRS = {"a": {"href"}, "img": {"src", "alt", "width", "height"}, "iframe": {"src", "title"},
+ATTRS = {"a": {"href", "class"}, "span": {"class"}, "img": {"src", "alt", "width", "height"}, "iframe": {"src", "title"},
          "video": {"src", "controls", "poster"}, "source": {"src", "type"}, "td": {"colspan", "rowspan"}, "th": {"colspan", "rowspan"}}
 # Decorative images used as icons/placeholders on the old site.
 DECOR = re.compile(r"(/word(-\d+x\d+)?\.png|female_place|placeholder\.png|male_place|pdf-file|domain-registration|startup\.png|certificate\.png|offer-|arrow|icon)", re.I)
@@ -172,6 +172,29 @@ def clean(content: str) -> tuple[str, list[dict]]:
                 if label.lower().strip(" .:") in GENERIC or len(label) < 4:
                     label = ""
                 docs.append({"label": label, "href": t["href"]})
+    # Page-builder buttons are links standing on their own (not inside text):
+    # style them as buttons. A button with no target ("#") becomes a muted label.
+    for a in list(soup.find_all("a")):
+        if a.parent is soup or a.parent.name in ("figure", "td") and not a.find("img"):
+            if a.find("img") or not a.get_text(strip=True):
+                continue
+            if a.get("href", "#") in ("", "#"):
+                text = a.get_text(" ", strip=True)
+                if text.lower().strip(" .") in GENERIC:
+                    a.decompose()  # dead "read more" button
+                elif re.search(r"regist|înscri|inscri", text, re.I):
+                    sp = soup.new_tag("span", attrs={"class": "btn btn-muted"})
+                    sp.string = text
+                    a.replace_with(sp)
+                else:  # accordion headers such as "Publications 2024", "Patents"
+                    h = soup.new_tag("h3")
+                    h.string = text
+                    a.replace_with(h)
+            else:
+                a["class"] = "btn"
+                a.string = a.get_text(" ", strip=True)
+    for v in soup.find_all("video"):
+        v["controls"] = ""
     # drop empty elements (left behind by the page builder)
     changed = True
     while changed:

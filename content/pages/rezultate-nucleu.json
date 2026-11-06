@@ -6,7 +6,7 @@
 "modified": "2022-11-18T10:27:48",
 "source": "https://www.ivb.ro/rezultate-nucleu",
 "lang": "ro",
-"html": "<h4>Rezultate  Nucleu</h4>\n<a href=\"#\">\nREZULTATE 2022   În curând ...\n</a>\n<a href=\"/wp-content/uploads/2022/11/Rezultate2021.pdf\">\nREZULTATE 2021\n</a>\n<a href=\"/wp-content/uploads/2022/11/Rezultate2020.pdf\">\nREZULTATE 2020\n</a>\n<a href=\"/wp-content/uploads/2022/11/Rezultate2019.pdf\">\nREZULTATE 2019\n</a>",
+"html": "<h4>Rezultate  Nucleu</h4>\n<h3>REZULTATE 2022 În curând ...</h3>\n<a class=\"btn\" href=\"/wp-content/uploads/2022/11/Rezultate2021.pdf\">REZULTATE 2021</a>\n<a class=\"btn\" href=\"/wp-content/uploads/2022/11/Rezultate2020.pdf\">REZULTATE 2020</a>\n<a class=\"btn\" href=\"/wp-content/uploads/2022/11/Rezultate2019.pdf\">REZULTATE 2019</a>",
 "docs": [
 {
 "label": "REZULTATE 2021",
