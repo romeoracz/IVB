@@ -48,7 +48,7 @@ export function PageShell({
         </div>
       </div>
       <main className="bg-paper">
-        <div className="mx-auto grid max-w-[1320px] gap-12 px-4 pb-24 sm:px-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
+        <div className={`mx-auto grid max-w-[1320px] gap-12 px-4 pb-24 sm:px-8 ${aside ? "lg:grid-cols-[minmax(0,1fr)_20rem]" : ""}`}>
           <div className="min-w-0">{children}</div>
           {aside && <aside className="lg:sticky lg:top-6 lg:self-start">{aside}</aside>}
         </div>

@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { isLocale, LOCALES, type Locale } from "@/lib/i18n";
 import { allPages, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
 import { DocList, PageShell } from "@/components/PageShell";
+import { Blocks } from "@/components/Blocks";
+import { CURATED } from "@/lib/content/curated";
 
 export const dynamicParams = false;
 
@@ -16,7 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const p = getPage(slug);
   if (!p || !isLocale(locale)) return {};
-  return { title: pageTitle(p, locale), alternates: { languages: { ro: `/ro/${slug}`, en: `/en/${slug}` } } };
+  const c = CURATED[slug];
+  return { title: c ? c.title[locale] : pageTitle(p, locale), description: c?.lead?.[locale], alternates: { languages: { ro: `/ro/${slug}`, en: `/en/${slug}` } } };
 }
 
 function fmtDate(iso: string, l: Locale) {
@@ -29,6 +32,24 @@ export default async function ContentPage({ params }: Props) {
   const p = getPage(slug);
   if (!p) notFound();
   const ro = locale === "ro";
+  const cur = CURATED[slug];
+  if (cur) {
+    const sec = sectionOf(slug);
+    return (
+      <PageShell
+        locale={locale}
+        title={cur.title[locale]}
+        kicker={cur.kicker?.[locale] ?? sec?.label[locale]}
+        crumbs={[...(sec ? [{ label: sec.label[locale], href: sec.href.replace("{locale}", locale) }] : []), { label: cur.title[locale] }]}
+        lead={cur.lead?.[locale]}
+      >
+        <Blocks blocks={cur.blocks} locale={locale} />
+        <p className="mt-16 text-xs text-ink-soft">
+          {ro ? "Actualizat la " : "Updated "} {fmtDate(p.modified, locale)}
+        </p>
+      </PageShell>
+    );
+  }
   const html = p.html.replaceAll("{locale}", locale);
   const section = sectionOf(slug);
   const parent = p.parent ? getById(p.parent) : undefined;

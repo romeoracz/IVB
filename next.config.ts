@@ -8,6 +8,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: { remotePatterns: [{ protocol: "https", hostname: "www.ivb.ro", pathname: "/wp-content/**" }] },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
