@@ -106,3 +106,46 @@ body {
     transform: scale(1.06) translateX(-2.5%);
   }
 }
+
+/* Long-form content imported from the old site, restyled. */
+.prose-ivb {
+  max-width: 52rem;
+  color: var(--color-ink);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.prose-ivb > * + * { margin-top: 1rem; }
+.prose-ivb h1, .prose-ivb h2, .prose-ivb h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-top: 2.4rem;
+}
+.prose-ivb h1 { font-size: 2.1rem; }
+.prose-ivb h2 { font-size: 1.8rem; }
+.prose-ivb h3 { font-size: 1.4rem; }
+.prose-ivb h4, .prose-ivb h5, .prose-ivb h6 {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-eosin);
+  margin-top: 2.6rem;
+}
+.prose-ivb a { color: var(--color-brand); text-decoration: underline; text-decoration-color: rgb(45 86 136 / 0.35); text-underline-offset: 3px; }
+.prose-ivb a:hover { color: var(--color-eosin); text-decoration-color: currentColor; }
+.prose-ivb ul { list-style: disc; padding-left: 1.4rem; }
+.prose-ivb ol { list-style: decimal; padding-left: 1.4rem; }
+.prose-ivb li + li { margin-top: 0.35rem; }
+.prose-ivb img { max-width: 100%; height: auto; border-radius: 1rem; display: inline-block; }
+.prose-ivb figure { margin: 1.5rem 0; }
+.prose-ivb figcaption { font-size: 0.85rem; color: var(--color-ink-soft); margin-top: 0.4rem; }
+.prose-ivb table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 0.92rem; width: 100%; }
+.prose-ivb td, .prose-ivb th { border-bottom: 1px solid var(--color-line); padding: 0.6rem 0.8rem; vertical-align: top; text-align: left; }
+.prose-ivb tr:first-child td { font-weight: 600; }
+.prose-ivb iframe, .prose-ivb video { width: 100%; aspect-ratio: 16 / 9; border-radius: 1rem; }
+.prose-ivb hr { border-color: var(--color-line); margin: 2rem 0; }
+.prose-ivb blockquote { border-left: 3px solid var(--color-eosin); padding-left: 1rem; color: var(--color-ink-soft); }

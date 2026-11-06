@@ -30,10 +30,10 @@ export function ConceptA({ locale, base }: P) {
           </h1>
           <p className="rise rise-3 mt-8 max-w-2xl text-lg text-white/75">{MISSION[locale]}</p>
           <div className="rise rise-3 mt-10 flex flex-wrap gap-3">
-            <a href="https://www.ivb.ro/cercetare" className="group inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-medium text-navy">
+            <a href={`/${locale}/cercetare`} className="group inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-medium text-navy">
               {ro ? "Cercetarea noastră" : "Our research"} <Arrow />
             </a>
-            <a href="https://www.ivb.ro/centrul-de-diagnostic" className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 font-medium">
+            <a href={`/${locale}/centrul-de-diagnostic`} className="group inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 font-medium">
               {ro ? "Centrul de Diagnostic" : "Diagnostic Centre"} <Arrow />
             </a>
           </div>
@@ -92,10 +92,10 @@ export function ConceptB({ locale, base }: P) {
           <div className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-end">
             <p className="rise rise-3 max-w-2xl text-xl leading-relaxed text-ink-soft">{MISSION[locale]}</p>
             <div className="rise rise-3 flex flex-wrap gap-3 lg:justify-end">
-              <a href="https://www.ivb.ro/despre_noi" className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper">
+              <a href={`/${locale}/despre_noi`} className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-medium text-paper">
                 {ro ? "Despre institut" : "About the institute"} <Arrow />
               </a>
-              <a href="https://www.ivb.ro/centrul-de-diagnostic" className="group inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 font-medium">
+              <a href={`/${locale}/centrul-de-diagnostic`} className="group inline-flex items-center gap-2 rounded-full border border-ink/25 px-6 py-3 font-medium">
                 {ro ? "Pacienți" : "Patients"} <Arrow />
               </a>
             </div>
@@ -161,7 +161,7 @@ export function ConceptC({ locale, base }: P) {
           </h1>
           <p className="rise rise-3 mt-8 max-w-xl text-lg text-white/70">{MISSION[locale]}</p>
           <div className="rise rise-3 mt-10 flex flex-wrap gap-3">
-            <a href="https://www.ivb.ro/laboratoare" className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-[#050b18]">
+            <a href={`/${locale}/laboratoare`} className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-[#050b18]">
               {ro ? "Explorează laboratoarele" : "Explore the laboratories"} <Arrow />
             </a>
           </div>

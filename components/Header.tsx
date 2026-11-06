@@ -8,7 +8,7 @@ import { LangSwitch } from "./LangSwitch";
 type Tone = "dark" | "light";
 
 function href(h: string, locale: Locale, base: string) {
-  return h === "/" ? `/${locale}${base}` : h;
+  return h === "/" ? `/${locale}${base}` : h.replace("{locale}", locale);
 }
 
 /**
@@ -54,7 +54,7 @@ export function Header({ locale, tone, base = "" }: { locale: Locale; tone: Tone
                     <ul className="rounded-2xl border border-line bg-paper p-2 text-ink shadow-2xl shadow-navy/20">
                       {item.children.map((c) => (
                         <li key={c.href}>
-                          <a href={c.href} className="block rounded-xl px-3 py-2 text-[0.9rem] hover:bg-paper-2">
+                          <a href={c.href.replace("{locale}", locale)} className="block rounded-xl px-3 py-2 text-[0.9rem] hover:bg-paper-2">
                             {c.label[locale]}
                           </a>
                         </li>
@@ -87,7 +87,7 @@ export function Header({ locale, tone, base = "" }: { locale: Locale; tone: Tone
                     <ul className="mb-2 ml-3 border-l border-line pl-3">
                       {item.children.map((c) => (
                         <li key={c.href}>
-                          <a href={c.href} className="block rounded-lg px-2 py-1.5 text-sm text-ink-soft hover:bg-paper-2">
+                          <a href={c.href.replace("{locale}", locale)} className="block rounded-lg px-2 py-1.5 text-sm text-ink-soft hover:bg-paper-2">
                             {c.label[locale]}
                           </a>
                         </li>

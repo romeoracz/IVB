@@ -1,0 +1,51 @@
+{
+"slug": "excelsan_rezultate",
+"id": 3695,
+"parent": 0,
+"title": "excelsan_rezultate",
+"modified": "2024-06-13T09:53:05",
+"source": "https://www.ivb.ro/excelsan_rezultate",
+"html": "<h4>REZULTATE</h4>\n<h3>ETAPA I<br/></h3><ul><li><a href=\"https://www.ivb.ro/wp-content/uploads/2022/11/lista_lucrari1.pdf\">Lista lucrări acceptate-publicate</a></li><li><a href=\"https://www.ivb.ro/wp-content/uploads/2022/11/mobilitati1.pdf\">Mobilități</a></li></ul>\n<h3>ETAPA II<br/></h3><ul><li><a href=\"https://www.ivb.ro/wp-content/uploads/2022/11/lista_lucrari_2.pdf\">Lista lucrări acceptate-publicate</a></li><li><a href=\"https://www.ivb.ro/wp-content/uploads/2022/11/mobilitati_2.pdf\">Mobilități</a></li></ul>\n<h3>ETAPA III<br/></h3><ul><li><a href=\"https://www.ivb.ro/wp-content/uploads/2023/06/lista-manuscrise-nov-2022-iun-2023.pdf\">Lista lucrări acceptate-publicate</a></li><li><a href=\"https://www.ivb.ro/wp-content/uploads/2023/06/mobilitati-efectuate-nov-2022-iun-2023.pdf\">Mobilități</a></li></ul>\n<h3>ETAPA IV<br/></h3><ul><li><a href=\"https://www.ivb.ro/wp-content/uploads/2023/10/Lista-articole-publicate.pdf\">Lista lucrări acceptate-publicate</a></li><li><a href=\"https://www.ivb.ro/wp-content/uploads/2023/10/Mobilitati.pdf\">Mobilități</a></li></ul>\n<h3>ETAPA V<br/></h3><ul><li><a href=\"https://www.ivb.ro/wp-content/uploads/2024/06/Publicatii-2024_5.pdf\">Lista lucrări acceptate-publicate</a></li><li><a href=\"https://www.ivb.ro/wp-content/uploads/2024/06/mobilitati5.pdf\">Mobilități</a></li></ul>",
+"docs": [
+{
+"label": "Lista lucrări acceptate-publicate",
+"href": "https://www.ivb.ro/wp-content/uploads/2022/11/lista_lucrari1.pdf"
+},
+{
+"label": "Mobilități",
+"href": "https://www.ivb.ro/wp-content/uploads/2022/11/mobilitati1.pdf"
+},
+{
+"label": "Lista lucrări acceptate-publicate",
+"href": "https://www.ivb.ro/wp-content/uploads/2022/11/lista_lucrari_2.pdf"
+},
+{
+"label": "Mobilități",
+"href": "https://www.ivb.ro/wp-content/uploads/2022/11/mobilitati_2.pdf"
+},
+{
+"label": "Lista lucrări acceptate-publicate",
+"href": "https://www.ivb.ro/wp-content/uploads/2023/06/lista-manuscrise-nov-2022-iun-2023.pdf"
+},
+{
+"label": "Mobilități",
+"href": "https://www.ivb.ro/wp-content/uploads/2023/06/mobilitati-efectuate-nov-2022-iun-2023.pdf"
+},
+{
+"label": "Lista lucrări acceptate-publicate",
+"href": "https://www.ivb.ro/wp-content/uploads/2023/10/Lista-articole-publicate.pdf"
+},
+{
+"label": "Mobilități",
+"href": "https://www.ivb.ro/wp-content/uploads/2023/10/Mobilitati.pdf"
+},
+{
+"label": "Lista lucrări acceptate-publicate",
+"href": "https://www.ivb.ro/wp-content/uploads/2024/06/Publicatii-2024_5.pdf"
+},
+{
+"label": "Mobilități",
+"href": "https://www.ivb.ro/wp-content/uploads/2024/06/mobilitati5.pdf"
+}
+]
+}

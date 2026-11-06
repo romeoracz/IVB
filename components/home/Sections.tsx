@@ -1,8 +1,8 @@
 import Image from "next/image";
 import type { Locale } from "@/lib/i18n";
+import { linkProps } from "@/lib/link";
 import { ANNOUNCEMENT, CREDENTIALS, EVENTS, LABS, PAST_EVENTS, PILLARS, POSITIONS, QUICK } from "@/lib/content/home";
 
-const ext = { target: "_blank", rel: "noopener" } as const;
 
 export function Arrow({ className = "" }: { className?: string }) {
   return (
@@ -29,7 +29,7 @@ export function Announcement({ locale, variant = "light" }: { locale: Locale; va
     gold: "bg-gold-soft border-gold text-ink",
   }[variant];
   return (
-    <a href={ANNOUNCEMENT.href} className={`group flex flex-col gap-3 rounded-3xl border p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8 ${styles}`}>
+    <a {...linkProps(ANNOUNCEMENT.href, locale)} className={`group flex flex-col gap-3 rounded-3xl border p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8 ${styles}`}>
       <span className="eyebrow w-fit shrink-0 rounded-full border border-current px-3 py-1 opacity-80">{ANNOUNCEMENT.kicker[locale]}</span>
       <span className="flex-1">
         <span className="block font-[family-name:var(--font-fraunces)] text-2xl font-semibold leading-tight">{ANNOUNCEMENT.title[locale]}</span>
@@ -49,7 +49,7 @@ export function QuickAccess({ locale, tone = "light" }: { locale: Locale; tone?:
     <ul className={`grid overflow-hidden rounded-3xl border sm:grid-cols-2 lg:grid-cols-4 ${dark ? "border-white/10 bg-white/[0.03]" : "border-line bg-white/60"}`}>
       {QUICK.map((q, i) => (
         <li key={q.href} className={`${i > 0 ? (dark ? "border-white/10" : "border-line") + " border-t sm:border-t-0 lg:border-l" : ""} ${i === 2 ? "sm:border-t lg:border-t-0" : ""} ${i === 3 ? "sm:border-l sm:border-t lg:border-t-0" : ""} ${i === 1 ? "sm:border-l" : ""}`}>
-          <a href={q.href} className={`group flex h-full flex-col gap-2 p-6 transition-colors ${dark ? "hover:bg-white/5" : "hover:bg-white"}`}>
+          <a {...linkProps(q.href, locale)} className={`group flex h-full flex-col gap-2 p-6 transition-colors ${dark ? "hover:bg-white/5" : "hover:bg-white"}`}>
             <span className={`flex items-center justify-between font-[family-name:var(--font-fraunces)] text-xl font-semibold ${dark ? "text-white" : "text-ink"}`}>
               {q.label[locale]} <Arrow />
             </span>
@@ -66,7 +66,7 @@ export function Pillars({ locale, tone = "light", images }: { locale: Locale; to
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {PILLARS.map((p, i) => (
-        <a key={p.href} href={p.href} {...(i === 0 ? ext : {})} className={`group relative flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-3xl p-7 ${dark ? "text-white" : "text-white"}`}>
+        <a key={p.href} {...linkProps(p.href, locale)} className={`group relative flex min-h-[22rem] flex-col justify-end overflow-hidden rounded-3xl p-7 ${dark ? "text-white" : "text-white"}`}>
           <Image src={images[i % images.length]} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover object-[75%_center] transition-transform duration-700 group-hover:scale-105" />
           <span className="absolute inset-0 bg-gradient-to-t from-navy via-navy/55 to-navy/0" aria-hidden />
           <span className="relative">
@@ -88,7 +88,7 @@ export function Labs({ locale, tone = "light" }: { locale: Locale; tone?: "light
     <ol className={`grid border-t sm:grid-cols-2 lg:grid-cols-4 ${dark ? "border-white/15" : "border-line"}`}>
       {LABS.map((l, i) => (
         <li key={l.href} className={`border-b ${dark ? "border-white/15" : "border-line"}`}>
-          <a href={l.href} className={`group flex h-full items-start gap-4 py-6 pr-6 transition-colors ${dark ? "hover:text-gold" : "hover:text-brand"}`}>
+          <a {...linkProps(l.href, locale)} className={`group flex h-full items-start gap-4 py-6 pr-6 transition-colors ${dark ? "hover:text-gold" : "hover:text-brand"}`}>
             <span className={`eyebrow pt-1 ${dark ? "text-white/40" : "text-ink-soft/60"}`}>{String(i + 1).padStart(2, "0")}</span>
             <span className={`font-[family-name:var(--font-fraunces)] text-[1.3rem] font-semibold leading-snug ${dark ? "text-white" : ""}`}>{l[locale]}</span>
           </a>
@@ -110,7 +110,7 @@ export function EventsAndPositions({ locale, tone = "light" }: { locale: Locale;
         <ul className="space-y-4">
           {EVENTS.map((e) => (
             <li key={e.href}>
-              <a href={e.href} {...ext} className={`group grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-3xl border p-6 ${card}`}>
+              <a {...linkProps(e.href, locale)} className={`group grid grid-cols-[auto_1fr_auto] items-center gap-6 rounded-3xl border p-6 ${card}`}>
                 <span className={`eyebrow w-24 leading-relaxed ${muted}`}>{e.date[locale]}</span>
                 <span>
                   <span className="block font-[family-name:var(--font-fraunces)] text-2xl font-semibold leading-tight">{e.title[locale]}</span>
@@ -127,7 +127,7 @@ export function EventsAndPositions({ locale, tone = "light" }: { locale: Locale;
         <ul className="space-y-4">
           {POSITIONS.map((p) => (
             <li key={p.href}>
-              <a href={p.href} className={`group flex items-center justify-between gap-4 rounded-3xl border p-6 ${card}`}>
+              <a {...linkProps(p.href, locale)} className={`group flex items-center justify-between gap-4 rounded-3xl border p-6 ${card}`}>
                 <span>
                   <span className={`eyebrow block ${muted}`}>{p.meta[locale]}</span>
                   <span className="mt-1 block font-medium leading-snug">{p.title[locale]}</span>
@@ -137,7 +137,7 @@ export function EventsAndPositions({ locale, tone = "light" }: { locale: Locale;
             </li>
           ))}
           <li>
-            <a href="https://www.ivb.ro/hrs4r-strategia-de-resurse-umane" className={`group eyebrow flex items-center gap-2 px-2 pt-2 ${muted}`}>
+            <a href={`/${locale}/hrs4r-strategia-de-resurse-umane`} className={`group eyebrow flex items-center gap-2 px-2 pt-2 ${muted}`}>
               {ro ? "Toate concursurile" : "All competitions"} <Arrow />
             </a>
           </li>
@@ -153,7 +153,7 @@ export function Credentials({ locale, tone = "light" }: { locale: Locale; tone?:
     <ul className="grid gap-px overflow-hidden rounded-3xl sm:grid-cols-3">
       {CREDENTIALS.map((c) => (
         <li key={c.k} className={dark ? "bg-white/[0.04]" : "bg-white"}>
-          <a href={c.href} {...ext} className="group block p-7">
+          <a {...linkProps(c.href, locale)} className="group block p-7">
             <span className={`display block text-4xl ${dark ? "text-gold" : "text-brand"}`}>{c.k}</span>
             <span className={`mt-2 block text-sm ${dark ? "text-white/70" : "text-ink-soft"}`}>{c.v[locale]}</span>
           </a>
@@ -171,7 +171,7 @@ export function PastEvents({ locale, tone = "light" }: { locale: Locale; tone?: 
       <ul className="flex flex-wrap gap-2">
         {PAST_EVENTS.map((e) => (
           <li key={e.href}>
-            <a href={e.href} className={`block rounded-full border px-4 py-2 text-sm transition-colors ${dark ? "border-white/15 text-white/75 hover:border-gold hover:text-gold" : "border-line text-ink-soft hover:border-brand hover:text-brand"}`}>
+            <a {...linkProps(e.href, locale)} className={`block rounded-full border px-4 py-2 text-sm transition-colors ${dark ? "border-white/15 text-white/75 hover:border-gold hover:text-gold" : "border-line text-ink-soft hover:border-brand hover:text-brand"}`}>
               {e.title}
             </a>
           </li>
