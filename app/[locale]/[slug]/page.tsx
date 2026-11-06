@@ -5,6 +5,8 @@ import { allPages, getById, getPage, pageTitle, sectionOf } from "@/lib/pages";
 import { DocList, PageShell } from "@/components/PageShell";
 import { Blocks } from "@/components/Blocks";
 import { CURATED } from "@/lib/content/curated";
+import { labOf } from "@/lib/content/labs";
+import Link from "next/link";
 
 export const dynamicParams = false;
 
@@ -53,16 +55,26 @@ export default async function ContentPage({ params }: Props) {
   const html = p.html.replaceAll("{locale}", locale);
   const section = sectionOf(slug);
   const parent = p.parent ? getById(p.parent) : undefined;
-  const crumbs = [
+  const labInfo = labOf(slug);
+  const exists = new Set(allPages().map((x) => x.slug));
+  const crumbs = labInfo
+    ? [
+        { label: ro ? "Cercetare" : "Research", href: `/${locale}/cercetare` },
+        { label: ro ? "Laboratoare" : "Laboratories", href: `/${locale}/laboratoare` },
+        ...(labInfo.lab.home !== slug ? [{ label: labInfo.lab.name[locale], href: `/${locale}/${labInfo.lab.home}` }] : []),
+        { label: labInfo.lab.home === slug ? labInfo.lab.name[locale] : pageTitle(p, locale) },
+      ]
+    : [
     ...(section ? [{ label: section.label[locale], href: section.href.replace("{locale}", locale) }] : []),
     ...(parent ? [{ label: pageTitle(parent, locale), href: `/${locale}/${parent.slug}` }] : []),
     { label: pageTitle(p, locale) },
   ];
+  const labTitle = labInfo ? (labInfo.lab.home === slug ? labInfo.lab.name[locale] : `${labInfo.lab.tabs.find((x) => x.slug === labInfo.active)?.label[locale] ?? pageTitle(p, locale)}`) : null;
   return (
     <PageShell
       locale={locale}
-      title={pageTitle(p, locale)}
-      kicker={section?.label[locale]}
+      title={labInfo && labInfo.active === slug ? labTitle! : pageTitle(p, locale)}
+      kicker={labInfo ? (labInfo.lab.home === slug ? (ro ? "Laborator" : "Laboratory") : labInfo.lab.name[locale]) : section?.label[locale]}
       crumbs={crumbs}
       aside={
         <div className="space-y-6">
@@ -73,6 +85,20 @@ export default async function ContentPage({ params }: Props) {
         </div>
       }
     >
+      {labInfo && (
+        <nav aria-label={labInfo.lab.name[locale]} className="mb-10 flex flex-wrap gap-2">
+          {labInfo.lab.tabs.filter((x) => exists.has(x.slug)).map((x) => (
+            <Link
+              key={x.slug}
+              href={`/${locale}/${x.slug}`}
+              aria-current={x.slug === labInfo.active ? "page" : undefined}
+              className={`rounded-full border px-4 py-2 text-sm transition-colors ${x.slug === labInfo.active ? "border-ink bg-ink text-paper" : "border-line bg-white text-ink-soft hover:border-eosin hover:text-eosin"}`}
+            >
+              {x.label[locale]}
+            </Link>
+          ))}
+        </nav>
+      )}
       {!ro && (
         <p className="mb-8 rounded-2xl border border-gold bg-gold-soft/50 px-5 py-4 text-sm text-ink">
           This page is currently available in Romanian only. An English version is being prepared.
